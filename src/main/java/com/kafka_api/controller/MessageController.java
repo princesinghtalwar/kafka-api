@@ -21,10 +21,7 @@ public class MessageController {
         if (request.getCreatedAt() == null) {
             request.setCreatedAt(Instant.now());
         }
-        producerService.send(request).addCallback(
-            result -> {}, // success handler (log or metrics)
-            ex -> {}      // failure handler (log, escalate)
-        );
+        producerService.send(request);
         return ResponseEntity.accepted().build();
     }
 }
